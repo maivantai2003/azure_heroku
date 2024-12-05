@@ -101,8 +101,8 @@ DataSeeder implements CommandLineRunner {
         // Seed Role
         if(roleRepo.count() == 0) {
             List<Role> roleList = List.of(
-                new Role(null, "USER", new ArrayList<>()),
-                new Role(null, "ADMIN", new ArrayList<>())
+                    new Role(null, "USER", new ArrayList<>()),
+                    new Role(null, "ADMIN", new ArrayList<>())
             );
 
             roleRepo.saveAll(roleList);
@@ -115,11 +115,11 @@ DataSeeder implements CommandLineRunner {
             Role userRole = roleRepo.findByName("USER");
 
             List<TaiKhoan> taiKhoanList = List.of(
-                new TaiKhoan(nguoiDungRepo.findAll().get(0).getMaNguoiDung(), passwordEncoder.encode("234"), "234", true, null, nguoiDungRepo.findAll().get(0), new ArrayList<>(List.of(adminRole))),
-                new TaiKhoan(nguoiDungRepo.findAll().get(1).getMaNguoiDung(), passwordEncoder.encode("quan"), "123", true, giaDinhRepo.findAll().get(0), nguoiDungRepo.findAll().get(1), new ArrayList<>(List.of(userRole))),
-                new TaiKhoan(nguoiDungRepo.findAll().get(3).getMaNguoiDung(), passwordEncoder.encode("quan"), "123", true, giaDinhRepo.findAll().get(1), nguoiDungRepo.findAll().get(3), new ArrayList<>(List.of(userRole))),
-                new TaiKhoan(nguoiDungRepo.findAll().get(6).getMaNguoiDung(), passwordEncoder.encode("quan"), "123", true, giaDinhRepo.findAll().get(2), nguoiDungRepo.findAll().get(6), new ArrayList<>(List.of(userRole))),
-                new TaiKhoan(nguoiDungRepo.findAll().get(9).getMaNguoiDung(), passwordEncoder.encode("quan"), "123", true, giaDinhRepo.findAll().get(3), nguoiDungRepo.findAll().get(9), new ArrayList<>(List.of(userRole)))
+                    new TaiKhoan(nguoiDungRepo.findAll().get(0).getMaNguoiDung(), passwordEncoder.encode("234"), "234", true, null, nguoiDungRepo.findAll().get(0), new ArrayList<>(List.of(adminRole))),
+                    new TaiKhoan(nguoiDungRepo.findAll().get(1).getMaNguoiDung(), passwordEncoder.encode("quan"), "123", true, giaDinhRepo.findAll().get(0), nguoiDungRepo.findAll().get(1), new ArrayList<>(List.of(userRole))),
+                    new TaiKhoan(nguoiDungRepo.findAll().get(3).getMaNguoiDung(), passwordEncoder.encode("tai"), "124", true, giaDinhRepo.findAll().get(1), nguoiDungRepo.findAll().get(3), new ArrayList<>(List.of(userRole))),
+                    new TaiKhoan(nguoiDungRepo.findAll().get(6).getMaNguoiDung(), passwordEncoder.encode("giau"), "125", true, giaDinhRepo.findAll().get(2), nguoiDungRepo.findAll().get(6), new ArrayList<>(List.of(userRole))),
+                    new TaiKhoan(nguoiDungRepo.findAll().get(9).getMaNguoiDung(), passwordEncoder.encode("si"), "126", true, giaDinhRepo.findAll().get(3), nguoiDungRepo.findAll().get(9), new ArrayList<>(List.of(userRole)))
             );
 
             taiKhoanRepo.saveAll(taiKhoanList);
@@ -131,10 +131,10 @@ DataSeeder implements CommandLineRunner {
             List<NguoiDung> nguoiDungList = nguoiDungRepo.findAll();
 
             for(NguoiDung nguoiDung : nguoiDungList) {
-                if(nguoiDung.getMaNguoiDung() == 1
-                        || nguoiDung.getMaNguoiDung() == 3
-                        || nguoiDung.getMaNguoiDung() == 6
-                        || nguoiDung.getMaNguoiDung() == 9) {
+                if(nguoiDung.getMaNguoiDung() == 2
+                        || nguoiDung.getMaNguoiDung() == 4
+                        || nguoiDung.getMaNguoiDung() == 7
+                        || nguoiDung.getMaNguoiDung() == 10) {
                     TongQuan tongQuan = new TongQuan();
                     tongQuan.setDuongHuyet("120");
                     tongQuan.setNhipTim("72");
@@ -163,14 +163,14 @@ DataSeeder implements CommandLineRunner {
         // Seed data cho ChiSo
         if(chiSoRepo.count() == 0) {
             List<ChiSo> chiSoList = List.of(
-                new ChiSo(null, "canNang", "Cân nặng", "Kg", true),
-                new ChiSo(null, "chiSoBMI", "Chỉ số BMI", "", true),
-                new ChiSo(null, "chieuCao", "Chiều cao", "Cm", true),
-                new ChiSo(null, "duongHuyet", "Đường huyết", "mg/dL", true),
-                new ChiSo(null, "huyetAp", "Huyết áp", "mmHg", true),
-                new ChiSo(null, "nhietDo", "Nhiệt độ cơ thể", "°C", true),
-                new ChiSo(null, "nhipTim", "Nhịp tim", "bpm", true),
-                new ChiSo(null, "nhomMau", "Nhóm máu", "", true)
+                    new ChiSo(null, "canNang", "Cân nặng", "Kg", true),
+                    new ChiSo(null, "chiSoBMI", "Chỉ số BMI", "", true),
+                    new ChiSo(null, "chieuCao", "Chiều cao", "Cm", true),
+                    new ChiSo(null, "duongHuyet", "Đường huyết", "mg/dL", true),
+                    new ChiSo(null, "huyetAp", "Huyết áp", "mmHg", true),
+                    new ChiSo(null, "nhietDo", "Nhiệt độ cơ thể", "°C", true),
+                    new ChiSo(null, "nhipTim", "Nhịp tim", "bpm", true),
+                    new ChiSo(null, "nhomMau", "Nhóm máu", "", true)
             );
 
             chiSoRepo.saveAll(chiSoList);
@@ -217,26 +217,26 @@ DataSeeder implements CommandLineRunner {
         // Seed TiemChung
         if(tiemChungRepo.count() == 0) {
             List<TiemChung> tiemChungList = List.of(
-                new TiemChung(null, "Vaccine COVID-19", "Bệnh viện Trung Ương", 2, true),
-                new TiemChung(null, "Vaccine Cúm", "Trung tâm Y tế Quận 1", 1, true),
-                new TiemChung(null, "Vaccine Sởi", "Trung tâm Y tế Quận 7", 1, false),
-                new TiemChung(null, "Vaccine Thủy Đậu", "Bệnh viện Nhi Đồng 2", 1, true),
-                new TiemChung(null, "Vaccine Viêm Gan B", "Trung tâm Y tế Quận 4", 3, true),
-                new TiemChung(null, "Vaccine HPV", "Bệnh viện Phụ Sản", 2, true),
-                new TiemChung(null, "Vaccine Bạch Hầu", "Trung tâm Y tế Quận 3", 1, false),
-                new TiemChung(null, "Vaccine Viêm Phổi", "Bệnh viện Đa Khoa", 2, true),
-                new TiemChung(null, "Vaccine Rotavirus", "Trung tâm Y tế Quận 10", 2, true),
-                new TiemChung(null, "Vaccine Uốn Ván", "Bệnh viện Đa Khoa", 1, true),
-                new TiemChung(null, "Vaccine COVID-19 Pfizer", "Trung tâm Y tế Quận 9", 2, true),
-                new TiemChung(null, "Vaccine Bại Liệt", "Trung tâm Y tế Quận 8", 1, true),
-                new TiemChung(null, "Vaccine Sởi Quai Bị", "Bệnh viện Nhi Đồng 1", 2, true),
-                new TiemChung(null, "Vaccine Tả", "Trung tâm Y tế Quận 7", 1, false),
-                new TiemChung(null, "Vaccine Zoster", "Trung tâm Y tế Quận 6", 2, true),
-                new TiemChung(null, "Vaccine Hib", "Trung tâm Y tế Quận 5", 1, true),
-                new TiemChung(null, "Vaccine Cúm H1N1", "Bệnh viện Đa Khoa", 1, true),
-                new TiemChung(null, "Vaccine Dengue", "Trung tâm Y tế Quận 11", 1, false),
-                new TiemChung(null, "Vaccine Men B", "Trung tâm Y tế Quận 12", 2, true),
-                new TiemChung(null, "Vaccine Viêm Màng Não", "Bệnh viện Nhi Đồng 2", 2, true)
+                    new TiemChung(null, "Vaccine COVID-19", "Bệnh viện Trung Ương", 2, true),
+                    new TiemChung(null, "Vaccine Cúm", "Trung tâm Y tế Quận 1", 1, true),
+                    new TiemChung(null, "Vaccine Sởi", "Trung tâm Y tế Quận 7", 1, false),
+                    new TiemChung(null, "Vaccine Thủy Đậu", "Bệnh viện Nhi Đồng 2", 1, true),
+                    new TiemChung(null, "Vaccine Viêm Gan B", "Trung tâm Y tế Quận 4", 3, true),
+                    new TiemChung(null, "Vaccine HPV", "Bệnh viện Phụ Sản", 2, true),
+                    new TiemChung(null, "Vaccine Bạch Hầu", "Trung tâm Y tế Quận 3", 1, false),
+                    new TiemChung(null, "Vaccine Viêm Phổi", "Bệnh viện Đa Khoa", 2, true),
+                    new TiemChung(null, "Vaccine Rotavirus", "Trung tâm Y tế Quận 10", 2, true),
+                    new TiemChung(null, "Vaccine Uốn Ván", "Bệnh viện Đa Khoa", 1, true),
+                    new TiemChung(null, "Vaccine COVID-19 Pfizer", "Trung tâm Y tế Quận 9", 2, true),
+                    new TiemChung(null, "Vaccine Bại Liệt", "Trung tâm Y tế Quận 8", 1, true),
+                    new TiemChung(null, "Vaccine Sởi Quai Bị", "Bệnh viện Nhi Đồng 1", 2, true),
+                    new TiemChung(null, "Vaccine Tả", "Trung tâm Y tế Quận 7", 1, false),
+                    new TiemChung(null, "Vaccine Zoster", "Trung tâm Y tế Quận 6", 2, true),
+                    new TiemChung(null, "Vaccine Hib", "Trung tâm Y tế Quận 5", 1, true),
+                    new TiemChung(null, "Vaccine Cúm H1N1", "Bệnh viện Đa Khoa", 1, true),
+                    new TiemChung(null, "Vaccine Dengue", "Trung tâm Y tế Quận 11", 1, false),
+                    new TiemChung(null, "Vaccine Men B", "Trung tâm Y tế Quận 12", 2, true),
+                    new TiemChung(null, "Vaccine Viêm Màng Não", "Bệnh viện Nhi Đồng 2", 2, true)
             );
 
             tiemChungRepo.saveAll(tiemChungList);
